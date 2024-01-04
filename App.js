@@ -1,30 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Greetings from './components/Greetings';
-import { WebView } from 'react-native-webview';
+// import { StatusBar } from 'expo-status-bar';
+// import { Text, View } from 'react-native';
+// import Greetings from './components/Greetings';
+// import { WebView } from 'react-native-webview';
+import Signup from './screens/Signup';
 
 
 export default function App() {
   const names = ["IBM", "HelpJuice", "Booma EnterPrises"]
 
   return (
-    <WebView source={{ uri: 'https://www.microverse.org/'}}/>
-    // <View style={styles.container}>
-    //   <Text>This is react native app build for practicing</Text>
-    //   {names.map((name) => (
-    //     <Greetings key={name} name={name}></Greetings>
-    //   ))}
-    //   <StatusBar style="auto" />
-    // </View>
+    <Signup />
   );
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
