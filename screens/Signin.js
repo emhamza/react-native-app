@@ -1,43 +1,41 @@
-import React from "react";
-import { useState } from "react";
-import { View, ScrollView, KeyboardAvoidingView} from "react-native";
+import React, { useState } from "react";
+import { View, KeyboardAvoidingView, ScrollView } from "react-native";
 import Text  from "@kaloraat/react-native-text";
+import CircleImage from "../components/auth/CircleImage";
 import UserInput from "../components/auth/UserInput";
 import SubmitButton from "../components/auth/SubmitButton";
 import axios from "axios";
-import CircleImage from "../components/auth/CircleImage";
 
-
-const Signup = () => {
-    const [name, setName] = useState("");
+const Signin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const handleSubmit = async () => {
+    const handleSignIn = async () => {
         setLoading(true);
-        if(!name || !email || !password){
+        if(!email || !password){
             alert("All fields are required");
-            setLoading(false)
+            setLoading(false);
             return;
         }
+    console.log("Login request =>", email, password);
 
-        console.log("SIGN UP REQUEST =>", name, email, password);
-        try{
-            const {data} = await axios.post('https://localhost:8000/api/signup', {
-             name,
-             email,
-             password
-        });
-        console.log("SIGNUP SUCCESS =>", data);
-        alert("Sign up successful!")
-        setLoading(false)
-        //redirection goes here
+        try {
+            const {data} = await axios.post('https://localhost:8000/api/signin', {
+                email,
+                password
+            })
+            console.log("LOGIN SUCCESSFUL =>", data)
+            alert("YOUR ARE NOW LOGED IN!")
+            setLoading(false);
+
         }catch(err){
             console.log(err);
-            setLoading(false)
+            setLoading(false);
         }
+
     }
+
 
     return (
         <KeyboardAvoidingView 
@@ -47,14 +45,7 @@ const Signup = () => {
             <ScrollView contentContainerStyle={{flexGrow: 1}}>
                 <View style={{flex: 1, justifyContent: "center"}}>
                     <CircleImage />
-                    <Text title center>Sign Up</Text>
-                    <UserInput 
-                    name="NAME" 
-                    value={name} 
-                    setValue={setName}
-                    autoCapitalize="words"
-                    autoCorrect={false}
-                    />
+                    <Text title center>Sign In</Text>
 
                     <UserInput
                     name="EMAIL" 
@@ -72,13 +63,13 @@ const Signup = () => {
                     secureTextEntry={true}
                     />
 
-                    <SubmitButton title="Sign Up" handleSubmit={handleSubmit} loading={loading} />
+                    <SubmitButton title="Log In" handleSubmit={handleSignIn} loading={loading}/>
                     {/* <Text>{JSON.stringify({name, email, password}, null, 4)}</Text> */}
 
                 </View>
             </ScrollView>
         </KeyboardAvoidingView>
-)
+    )
 }
 
-export default Signup;
+export default Signin;

@@ -3,13 +3,13 @@
 // import Greetings from './components/Greetings';
 // import { WebView } from 'react-native-webview';
 import Signup from './screens/Signup';
-
+import Signin from './screens/Signin';
 
 export default function App() {
   const names = ["IBM", "HelpJuice", "Booma EnterPrises"]
 
   return (
-    <Signup />
+    <Signin />
   );
 }
 

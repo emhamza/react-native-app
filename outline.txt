@@ -1,0 +1,6 @@
+In this modification I add the scrolView Feature in the signup page:
+
+I wrapped the entire content inside a ScrollView to make it scrollable.
+Added a KeyboardAvoidingView to handle the keyboard behavior,
+which is necessary for a better user experience on iOS devices. The behavior is set to
+"padding" for iOS and "height" for Android.
