@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { View, KeyboardAvoidingView, ScrollView } from "react-native";
+import { View, KeyboardAvoidingView, ScrollView, Button } from "react-native";
 import Text  from "@kaloraat/react-native-text";
 import CircleImage from "../components/auth/CircleImage";
 import UserInput from "../components/auth/UserInput";
 import SubmitButton from "../components/auth/SubmitButton";
 import axios from "axios";
+import Signup from "./Register";
 
-const Signin = () => {
+const Signin = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -62,7 +63,13 @@ const Signin = () => {
                     autoCompleteType="password"
                     secureTextEntry={true}
                     />
-
+                    <Button
+                     title="Don't have an account? Sign Up Here"
+                     onPress={() =>{
+                        console.log("Button pressed");  // Add this line for debugging
+                        navigation.navigate('Signup');
+                      }}
+                    />
                     <SubmitButton title="Log In" handleSubmit={handleSignIn} loading={loading}/>
                     {/* <Text>{JSON.stringify({name, email, password}, null, 4)}</Text> */}
 
